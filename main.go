@@ -7,8 +7,16 @@ import (
 	"github.com/indeedhat/parity-nas/pkg/server_mux"
 )
 
-func Init(logger *logging.Logger) error {
+var logger *logging.Logger
+
+func Init(l *logging.Logger) error {
+	logger = l
 	logger.Info("initializing healthz plugin")
+	return nil
+}
+
+func Close() error {
+	logger.Info("Closing healthz plugin")
 	return nil
 }
 
