@@ -7,8 +7,13 @@ import (
 	"github.com/indeedhat/parity-nas/pkg/server_mux"
 )
 
-func Init(router servermux.Router, logger *logging.Logger) error {
+func Init(logger *logging.Logger) error {
 	logger.Info("initializing healthz plugin")
+	return nil
+}
+
+func PublicRoutes(router servermux.Router, logger *logging.Logger) error {
+	logger.Info("initializing public routes")
 
 	router.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) {
 		servermux.NoContent(w)
